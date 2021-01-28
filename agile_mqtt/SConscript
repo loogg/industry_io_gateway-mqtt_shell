@@ -1,0 +1,15 @@
+from building import *
+
+# get current directory
+cwd = GetCurrentDir()
+
+src = Glob('MQTTPacket/*.c')
+
+src += ['MQTTClient-RT/mqtt_client.c']
+
+path = [cwd + '/MQTTPacket']
+path += [cwd + '/MQTTClient-RT']
+
+group = DefineGroup('', src, depend = [''], CPPPATH = path)
+
+Return('group')
